@@ -50,10 +50,10 @@ public static Connection con() throws ClassNotFoundException, SQLException{
         nama = new javax.swing.JTextField();
         jurusan = new javax.swing.JTextField();
         email = new javax.swing.JTextField();
-        Password = new javax.swing.JTextField();
+        Password1 = new javax.swing.JTextField();
         jeniskelamin = new javax.swing.JTextField();
         tanggallahir = new javax.swing.JTextField();
-        Alamat = new javax.swing.JTextField();
+        Alamat1 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel9 = new javax.swing.JLabel();
@@ -93,9 +93,9 @@ public static Connection con() throws ClassNotFoundException, SQLException{
             }
         });
 
-        Alamat.addActionListener(new java.awt.event.ActionListener() {
+        Alamat1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AlamatActionPerformed(evt);
+                Alamat1ActionPerformed(evt);
             }
         });
 
@@ -164,10 +164,10 @@ public static Connection con() throws ClassNotFoundException, SQLException{
                             .addComponent(jLabel2))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Alamat)
+                            .addComponent(Alamat1)
                             .addComponent(tanggallahir)
                             .addComponent(jeniskelamin)
-                            .addComponent(Password)
+                            .addComponent(Password1)
                             .addComponent(email)
                             .addComponent(jurusan)
                             .addComponent(nama)))
@@ -214,7 +214,7 @@ public static Connection con() throws ClassNotFoundException, SQLException{
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(Password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Password1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
@@ -226,7 +226,7 @@ public static Connection con() throws ClassNotFoundException, SQLException{
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
-                    .addComponent(Alamat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Alamat1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(39, 39, 39)
                 .addComponent(jButton1)
                 .addGap(18, 18, 18)
@@ -236,10 +236,11 @@ public static Connection con() throws ClassNotFoundException, SQLException{
                     .addComponent(jLabel9)
                     .addComponent(Database, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton3)
-                    .addComponent(jButton4))
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jButton2)
+                        .addComponent(jButton4)))
                 .addGap(66, 66, 66)
                 .addComponent(jLabel10)
                 .addContainerGap(192, Short.MAX_VALUE))
@@ -271,13 +272,13 @@ public static Connection con() throws ClassNotFoundException, SQLException{
         String Nama = nama.getText();
         String Jurusan = jurusan.getText();
         String Email = email.getText();
-        String password = Password.getText();
-        String Jeniskelamin = jeniskelamin.getText();
-        String Tanggallahir = tanggallahir.getText();
-        String alamat = Alamat.getText();
+        String Password = Password1.getText();
+        String Jenis_kelamin = jeniskelamin.getText();
+        String Tanggal_lahir = tanggallahir.getText();
+        String Alamat = Alamat1.getText();
         try{
             con = con();
-            PreparedStatement pst = con.prepareStatement(String.format("INSERT INTO tbl_mahasiswa (Nama, Jurusan, Email, password, Jeniskelamin, Tanggallahir, alamat) VALUES('%s', '%s', '%s', '%s', '%s', '%s', '%s')",  nama, jurusan, email, Password, jeniskelamin, tanggallahir, Alamat));
+            PreparedStatement pst = con.prepareStatement(String.format("INSERT INTO tbl_data (Nama, Jurusan, Email, Password, Jenis_kelamin, Tanggal_lahir, Alamat) VALUES('%s', '%s', '%s', '%s', '%s', '%s', '%s')",  nama, jurusan, email, Password, jeniskelamin, tanggallahir, Alamat));
             ResultSet rst = pst.executeQuery();
         } catch (ClassNotFoundException | SQLException ex) { 
         
@@ -298,14 +299,14 @@ public static Connection con() throws ClassNotFoundException, SQLException{
         String Nama = nama.getText();
         String Jurusan = jurusan.getText();
         String Email = email.getText();
-        String password = Password.getText();
+        String password = Password1.getText();
         String Jeniskelamin = jeniskelamin.getText();
         String Tanggallahir = tanggallahir.getText();
-        String alamat = Alamat.getText();
+        String alamat = Alamat1.getText();
         String tdb = Database.getText();
         try {
             con = con();
-            PreparedStatement pst = con.prepareStatement(String.format("UPDATE tbl_mahasiswa SET  Jurusan = '%s', Email = '%s', password = '%s', Jeniskelamin = '%s', Tanggallahir = '%s', alamat = '%s' WHERE Nama = '%s' ",  Jurusan, email, password, jeniskelamin, tanggallahir, Alamat,tdb));
+            PreparedStatement pst = con.prepareStatement(String.format("UPDATE tbl_mahasiswa SET  Jurusan = '%s', Email = '%s', password = '%s', Jeniskelamin = '%s', Tanggallahir = '%s', alamat = '%s' WHERE Nama = '%s' ",  Jurusan, email, password, jeniskelamin, tanggallahir, Alamat1,tdb));
             ResultSet rst = pst.executeQuery();
         } catch (SQLException ex) {
         Logger.getLogger(pendaftaran.class.getName()).log(Level.SEVERE, null, ex);
@@ -318,9 +319,9 @@ public static Connection con() throws ClassNotFoundException, SQLException{
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton4ActionPerformed
 
-    private void AlamatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AlamatActionPerformed
+    private void Alamat1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Alamat1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_AlamatActionPerformed
+    }//GEN-LAST:event_Alamat1ActionPerformed
 
     private void tanggallahirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tanggallahirActionPerformed
         // TODO add your handling code here:
@@ -362,9 +363,9 @@ public static Connection con() throws ClassNotFoundException, SQLException{
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField Alamat;
+    private javax.swing.JTextField Alamat1;
     private javax.swing.JTextField Database;
-    private javax.swing.JTextField Password;
+    private javax.swing.JTextField Password1;
     private javax.swing.JTextField email;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
